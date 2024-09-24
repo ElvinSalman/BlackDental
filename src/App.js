@@ -315,11 +315,12 @@ function App() {
         <div id='lineInpartners'></div>
         <Carousel
           autoPlay={true}
-          autoPlaySpeed={1500}
-          transitionDuration={100}
+          autoPlaySpeed={0}
+          transitionDuration={2500}
+          infinite={true}
+          customTransition={'transform 3s linear'}
           containerClass="carousel-container"
           responsive={responsiveThird}
-          infinite={true}
           arrows={false}>
           <div className='partnerDiv'>
             <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: ' rgba(255, 255, 255, 0)' }}></div>
