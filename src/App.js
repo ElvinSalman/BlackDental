@@ -6,8 +6,6 @@ import 'react-multi-carousel/lib/styles.css';
 import { Fade, Zoom, Slide  } from 'react-awesome-reveal';
 import Hamburger from 'hamburger-react'
 import React, { useState } from 'react';
-import { GhostNavbar } from "react-hamburger-menus";
-import "react-hamburger-menus/dist/style.css";
 
 const responsive = {
   superLargeDesktop: {
