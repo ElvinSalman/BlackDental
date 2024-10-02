@@ -9,6 +9,8 @@
     background-color: #1e1f26;
     min-height: 100vh;
     width: 100%;
+    // overflow: hidden;
+    // position: relative;
 }
 
 .cover {
@@ -19,17 +21,19 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.199);
 }
+
 header {
-    background-color: rgba(15, 15, 15, 0.911);
+    background-color: rgb(15, 15, 15);
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
+    padding: 0 30px;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 9998;
 
-    &>div {
+    .logo {
         width: 20%;
         color: #fff;
 
@@ -60,9 +64,10 @@ header {
         }
     }
 }
+
 #first {
     position: relative;
-    
+
 
     #mainBlock {
         width: 100%;
@@ -79,7 +84,7 @@ header {
 
         #mainTxt {
             position: absolute;
-            background-color: #fff;
+            background-color: #ffffffea;
             box-shadow: 0 0 20px rgb(185, 185, 185);
             border-radius: 20px;
             transform: translateY(-50%);
@@ -109,12 +114,13 @@ header {
 }
 
 #about {
-    height: 400px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.37);
+    padding: 40px 0;
 
     img {
         width: 35%;
@@ -137,7 +143,7 @@ header {
 
 #galery {
     margin-top: 40px;
-    padding: 10px 240px;
+    padding: 10px 80px;
 
     h1 {
         text-align: center;
@@ -155,7 +161,7 @@ header {
 
     .galeryDiv {
         width: 100%;
-        height: 600px;
+        height: 700px;
         cursor: pointer;
 
         img {
@@ -175,15 +181,14 @@ header {
     position: relative;
 
     &>div {
-        width: 23%;
         background-color: #ffffffd7;
-        padding: 25px 30px;
+        padding: 35px 40px;
         text-align: center;
         border-radius: 13px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: 10%;
+        left: 25px;
 
         #lineinBackDiv {
             height: 3px;
@@ -218,6 +223,7 @@ header {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-direction: row;
         margin: 40px 0;
         margin-bottom: 80px;
 
@@ -331,6 +337,7 @@ header {
         min-height: 500px;
         border-radius: 20px;
         color: #fff;
+
         img {
             width: 150px;
             height: 150px;
@@ -373,6 +380,11 @@ header {
     margin-top: 40px;
     padding: 20px;
 
+    iframe {
+        width: 100%;
+        height: 600px;
+    }
+
     h1 {
         text-align: center;
         margin-bottom: 20px;
@@ -396,33 +408,44 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &>div {
+
+    .ffooter {
         p {
             margin-top: 10px;
             font-size: 12px;
         }
     }
 
-    ul {
-        width: 60%;
-        list-style: none;
+    .sfooter {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        li{
-            a{
-                color: #fff;
-                text-decoration: none;
-                transition: 0.3s;
-                &:hover{
-                    color: #c7c6c6;
+        flex-direction: row;
+        width: 60%;
+        justify-content: space-around;
+
+        ul {
+            width: 50%;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            li {
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: #c7c6c6;
+                    }
                 }
             }
         }
     }
+
 }
 
-#contact{
+#contact {
     height: 70px;
     width: 70px;
     display: flex;
@@ -436,15 +459,363 @@ footer {
     background-color: green;
     transition: 0.3s;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         background-color: rgb(0, 54, 0);
     }
-    a{
+
+    a {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         width: 100%;
         text-decoration: none;
+    }
+}
+
+#hamMenu {
+    display: none;
+}
+
+#mobileMenu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 92vh;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        margin: 15px 0;
+        width: 60%;
+        text-align: center;
+        a{
+            display: block;
+            padding: 15px;
+            color: white;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.5s;
+            background-color: transparent;
+            &:hover{
+                // border-bottom: 2px solid white;
+                background-color: rgba(167, 167, 167, 0.199);
+                // color: #000;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:900px) {
+    #hamMenu {
+        display: flex;
+        width: 15%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    header {
+        padding: 0;
+
+        .logo {
+            margin-left: 25px;
+        }
+
+        ul {
+            display: none;
+        }
+    }
+
+    #first {
+        #mainBlock {
+            #mainTxt {
+                width: 50%;
+            }
+        }
+    }
+
+    #about {
+        flex-direction: column;
+
+        img {
+            width: 80%;
+            margin-bottom: 30px;
+        }
+
+        &>div {
+            width: 80%;
+            margin-left: 0;
+        }
+    }
+
+    #galery {
+        padding: 10px 50px;
+
+        .galeryDiv {
+            height: 400px;
+        }
+    }
+
+    #backDivImg {
+        &>div {
+            width: 45%;
+        }
+    }
+
+    #servicesDiv {
+        margin-top: 40px;
+        padding: 10px;
+
+
+
+        #services {
+            flex-direction: column;
+            margin: 40px 0;
+
+            &>div {
+                width: 70%;
+                margin-top: 30px;
+            }
+        }
+    }
+
+    #team {
+        .teamwDiv {
+            width: 65%;
+        }
+    }
+
+    #partners {
+        padding: 8px 3px;
+
+        .partnerDiv {
+            img {
+                width: 65%;
+            }
+        }
+    }
+
+    footer {
+        align-items: flex-start;
+        flex-direction: column;
+
+        .ffooter {
+            p {
+                margin-top: 10px;
+                font-size: 12px;
+            }
+        }
+
+        .sfooter {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            width: 60%;
+            justify-content: space-around;
+
+            ul {
+                width: 50%;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                li {
+                    margin: 10px 0;
+
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                        transition: 0.3s;
+
+                        &:hover {
+                            color: #c7c6c6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:660px) {
+    #reviewsDiv {
+        #reviews {
+            .reviewDiv {
+                width: 90%;
+                padding: 5px;
+            }
+        }
+    }
+
+    #first {
+        #mainBlock {
+            height: 250px;
+
+            #mainTxt {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                left: 20px;
+                padding: 20px 10px;
+
+                h1 {
+                    font-size: 18px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+
+            }
+        }
+    }
+
+    #about {
+        flex-direction: column;
+
+        img {
+            width: 80%;
+            margin-bottom: 30px;
+        }
+
+        &>div {
+            width: 80%;
+            margin-left: 0;
+        }
+    }
+
+    #galery {
+        padding: 10px;
+
+        .galeryDiv {
+            height: 300px;
+        }
+    }
+
+    #backDivImg {
+        height: 400px;
+        background-position: center top;
+
+        &>div {
+            padding: 10px;
+            width: 60%;
+
+            h2 {
+                font-size: 16px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    #servicesDiv {
+        margin-top: 40px;
+        padding: 10px;
+
+
+
+        #services {
+            flex-direction: column;
+            margin: 40px 0;
+
+            &>div {
+                width: 90%;
+                margin-top: 30px;
+            }
+        }
+    }
+
+    #map {
+        padding: 10px;
+
+        iframe {
+            width: 100%;
+            height: 400px;
+        }
+
+        #lineInMap {
+            height: 4px;
+            background-color: #fff;
+            width: 10%;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+    }
+
+    #team {
+        .teamwDiv {
+            width: 90%;
+        }
+    }
+
+    #partners {
+        padding: 8px 3px;
+
+        .partnerDiv {
+            img {
+                width: 65%;
+            }
+        }
+    }
+
+    footer {
+        align-items: flex-start;
+        flex-direction: column;
+
+        .ffooter {
+            p {
+                margin-top: 10px;
+                font-size: 12px;
+            }
+        }
+
+        .sfooter {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            width: 60%;
+            justify-content: space-around;
+
+            ul {
+                width: 50%;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                li {
+                    margin: 10px 0;
+
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                        transition: 0.3s;
+
+                        &:hover {
+                            color: #c7c6c6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

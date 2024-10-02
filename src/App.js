@@ -3,7 +3,11 @@ import main from './photos/main.png';
 import './App.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Fade, Zoom } from 'react-awesome-reveal';
+import { Fade, Zoom, Slide  } from 'react-awesome-reveal';
+import Hamburger from 'hamburger-react'
+import React, { useState } from 'react';
+import { GhostNavbar } from "react-hamburger-menus";
+import "react-hamburger-menus/dist/style.css";
 
 const responsive = {
   superLargeDesktop: {
@@ -36,12 +40,12 @@ const responsiveSecond = {
     items: 3
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 720 },
     items: 2
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 2
+    breakpoint: { max: 720, min: 0 },
+    items: 1
   }
 };
 
@@ -65,9 +69,27 @@ const responsiveThird = {
   }
 };
 function App() {
+  const [isOpen, setOpen] = useState(false)
   return (
 
     <div className="App">
+
+      {isOpen ?
+        <Slide >
+          <ul className='animate__backInRight' id='mobileMenu'>
+            <li><a onClick={() => { setOpen(false) }} href="#first">Главная</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#about">О Нас</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#galery">Галерея</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#servicesDiv">Услуги</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#reviewsDiv">Отзывы</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#team">Команда</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#partners">Партнеры</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#map">Карта</a></li>
+          </ul>
+        </Slide>
+        : <></>}
+
+
       <header>
         <div className='logo'>
           <img src={logo} alt="logo" />
@@ -82,6 +104,39 @@ function App() {
           <li><a href="#partners">Партнеры</a></li>
           <li><a href="#map">Карта</a></li>
         </ul>
+        <div id='hamMenu'>
+          <Hamburger toggled={isOpen} toggle={setOpen} />
+          {/* <GhostNavbar
+        styles={{
+          fontColor: "#fff",
+          fontHoverColor: "black",
+          listHoverColor: ["transparent", "#fff"],
+          floatButtonX: 87,
+          floatButtonY: 15,
+          navigationButton: {
+            borderRadius: "5px",
+            width: "50px",
+            backgroundColor: "black",
+          },
+          navigationBackground: {
+            backgroundColor: "black",
+          },
+          iconColor: "#fff",
+        }}
+      >
+        <ul
+          style={{
+            fontFamily: 'font-family: "Lato", sans-serif',
+          }}
+        >
+          <li>ABOUT</li>
+          <li>PROJECTS</li>
+          <li>ELEMENTS</li>
+          <li>CONTACT</li>
+        </ul>
+      </GhostNavbar> */}
+        </div>
+
       </header>
       <div id='first'>
 
@@ -274,7 +329,7 @@ function App() {
           <div className='teamwDiv'>
             <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: ' rgba(255, 255, 255, 0)' }}></div>
             <img src={main} alt="" />
-            <p style={{ margin: '25px 0' }}>
+            <p style={{ margin: '25px 0', textAlign: 'center' }}>
               Эффективные методики лечения, основанные на передовых медицинских исследованиях
             </p>
             <p style={{ marginTop: '35px', marginBottom: '20px', fontSize: 18, fontWeight: '600' }}>Байрам Байрамов</p>
@@ -283,7 +338,7 @@ function App() {
           <div className='teamwDiv'>
             <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: ' rgba(255, 255, 255, 0)' }}></div>
             <img src={main} alt="" />
-            <p style={{ margin: '25px 0' }}>
+            <p style={{ margin: '25px 0', textAlign: 'center' }}>
               Эффективные методики лечения, основанные на передовых медицинских исследованиях
             </p>
             <p style={{ marginTop: '35px', marginBottom: '20px', fontSize: 18, fontWeight: '600' }}>Байрам Байрамов</p>
@@ -292,7 +347,7 @@ function App() {
           <div className='teamwDiv'>
             <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: ' rgba(255, 255, 255, 0)' }}></div>
             <img src={main} alt="" />
-            <p style={{ margin: '25px 0' }}>
+            <p style={{ margin: '25px 0', textAlign: 'center' }}>
               Эффективные методики лечения, основанные на передовых медицинских исследованиях
             </p>
             <p style={{ marginTop: '35px', marginBottom: '20px', fontSize: 18, fontWeight: '600' }}>Байрам Байрамов</p>
@@ -301,7 +356,7 @@ function App() {
           <div className='teamwDiv'>
             <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: ' rgba(255, 255, 255, 0)' }}></div>
             <img src={main} alt="" />
-            <p style={{ margin: '25px 0' }}>
+            <p style={{ margin: '25px 0', textAlign: 'center' }}>
               Эффективные методики лечения, основанные на передовых медицинских исследованиях
             </p>
             <p style={{ marginTop: '35px', marginBottom: '20px', fontSize: 18, fontWeight: '600' }}>Байрам Байрамов</p>
@@ -364,24 +419,28 @@ function App() {
       <div id='map'>
         <h1>Карта</h1>
         <div id='lineInMap'></div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189.98758440325756!2d49.83040338311861!3d40.36892887193947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d007fcf658b%3A0x600e0acc477acd77!2sBlack%20Dental!5e0!3m2!1sru!2saz!4v1727001739227!5m2!1sru!2saz" width="100%" height="600" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189.98758440325756!2d49.83040338311861!3d40.36892887193947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d007fcf658b%3A0x600e0acc477acd77!2sBlack%20Dental!5e0!3m2!1sru!2saz!4v1727001739227!5m2!1sru!2saz" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <footer>
-        <div>
+        <div className='ffooter'>
           <h3>Black Dental</h3>
           <p>Авторские права © 2024 Все права защищены</p>
         </div>
-        <ul>
-          <li><a href="#first">Главная</a></li>
-          <li><a href="#about">О Нас</a></li>
-          <li><a href="#galery">Галерея</a></li>
-          <li><a href="#servicesDiv">Услуги</a></li>
-          <li><a href="#reviewsDiv">Отзывы</a></li>
-          <li><a href="#team">Команда</a></li>
-          <li><a href="#partners">Партнеры</a></li>
-          <li><a href="#map">Карта</a></li>
-        </ul>
+        <div className='sfooter'>
+          <ul>
+            <li><a href="#first">Главная</a></li>
+            <li><a href="#about">О Нас</a></li>
+            <li><a href="#galery">Галерея</a></li>
+            <li><a href="#servicesDiv">Услуги</a></li>
+          </ul>
+          <ul>
+            <li><a href="#reviewsDiv">Отзывы</a></li>
+            <li><a href="#team">Команда</a></li>
+            <li><a href="#partners">Партнеры</a></li>
+            <li><a href="#map">Карта</a></li>
+          </ul>
+        </div>
       </footer>
 
       <div id='contact'>
