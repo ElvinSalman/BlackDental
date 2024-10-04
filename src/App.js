@@ -3,9 +3,10 @@ import main from './photos/main.png';
 import './App.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Fade, Zoom, Slide  } from 'react-awesome-reveal';
+import { Fade, Zoom, Slide } from 'react-awesome-reveal';
 import Hamburger from 'hamburger-react'
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const responsive = {
   superLargeDesktop: {
@@ -67,22 +68,45 @@ const responsiveThird = {
   }
 };
 function App() {
-  const [isOpen, setOpen] = useState(false)
+
+  const [isOpen, setOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  }
+
+  // const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default value
+  const handleLanguageChange = (event) => {
+    const value = event.target.value;
+    changeLanguage(value);
+
+    // setSelectedLanguage(value);  // Update the selected language
+  };
   return (
 
     <div className="App">
-
+      {/* <h1 style={{ color: '#fff' }}>{t("test")}</h1> */}
       {isOpen ?
         <Slide >
           <ul className='animate__backInRight' id='mobileMenu'>
-            <li><a onClick={() => { setOpen(false) }} href="#first">Главная</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#about">О Нас</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#galery">Галерея</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#servicesDiv">Услуги</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#reviewsDiv">Отзывы</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#team">Команда</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#partners">Партнеры</a></li>
-            <li><a onClick={() => { setOpen(false) }} href="#map">Карта</a></li>
+            <li>
+              <select
+                onChange={handleLanguageChange}
+                style={{ fontSize: '18px', padding: "8px 13px ", backgroundColor: '#000', color: '#fff', border: 'none', borderBottom: '2px solid white', outline: 'none' }}>
+                <option value='az'>AZ</option>
+                <option value='ru'>RU</option>
+                <option selected value='en'>EN</option>
+              </select>
+            </li>
+            <li><a onClick={() => { setOpen(false) }} href="#first">{t("menuHome")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#about">{t("menuAbout")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#galery">{t("menuGalery")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#servicesDiv">{t("menuServices")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#reviewsDiv">{t("menuReviews")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#team">{t("menuTeam")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#partners">{t("menuPartners")}</a></li>
+            <li><a onClick={() => { setOpen(false) }} href="#map">{t("menuMap")}</a></li>
           </ul>
         </Slide>
         : <></>}
@@ -93,46 +117,26 @@ function App() {
           <img src={logo} alt="logo" />
         </div>
         <ul>
-          <li><a href="#first">Главная</a></li>
-          <li><a href="#about">О Нас</a></li>
-          <li><a href="#galery">Галерея</a></li>
-          <li><a href="#servicesDiv">Услуги</a></li>
-          <li><a href="#reviewsDiv">Отзывы</a></li>
-          <li><a href="#team">Команда</a></li>
-          <li><a href="#partners">Партнеры</a></li>
-          <li><a href="#map">Карта</a></li>
+          <li><a href="#first">{t("menuHome")}</a></li>
+          <li><a href="#about">{t("menuAbout")}</a></li>
+          <li><a href="#galery">{t("menuGalery")}</a></li>
+          <li><a href="#servicesDiv">{t("menuServices")}</a></li>
+          <li><a href="#reviewsDiv">{t("menuReviews")}</a></li>
+          <li><a href="#team">{t("menuTeam")}</a></li>
+          <li><a href="#partners">{t("menuPartners")}</a></li>
+          <li><a href="#map">{t("menuMap")}</a></li>
+          <li>
+            <select
+              onChange={handleLanguageChange}
+              style={{ fontSize: '16px', padding: "8px 13px ", backgroundColor: '#000', color: '#fff', border: 'none', borderBottom: '2px solid white', outline: 'none' }}>
+              <option value='az'>AZ</option>
+              <option value='ru'>RU</option>
+              <option selected value='en'>EN</option>
+            </select>
+          </li>
         </ul>
         <div id='hamMenu'>
           <Hamburger toggled={isOpen} toggle={setOpen} />
-          {/* <GhostNavbar
-        styles={{
-          fontColor: "#fff",
-          fontHoverColor: "black",
-          listHoverColor: ["transparent", "#fff"],
-          floatButtonX: 87,
-          floatButtonY: 15,
-          navigationButton: {
-            borderRadius: "5px",
-            width: "50px",
-            backgroundColor: "black",
-          },
-          navigationBackground: {
-            backgroundColor: "black",
-          },
-          iconColor: "#fff",
-        }}
-      >
-        <ul
-          style={{
-            fontFamily: 'font-family: "Lato", sans-serif',
-          }}
-        >
-          <li>ABOUT</li>
-          <li>PROJECTS</li>
-          <li>ELEMENTS</li>
-          <li>CONTACT</li>
-        </ul>
-      </GhostNavbar> */}
         </div>
 
       </header>
@@ -143,9 +147,9 @@ function App() {
             <img src={main} alt="" />
             <div className='cover'></div>
             <div id='mainTxt'>
-              <h1>Добро пожаловать в <br /> клинику</h1>
+              <h1>{t("mainTxt1")}</h1>
               <div></div>
-              <p>Мы заботимся о вашем здоровье</p>
+              <p>{t("mainTxt2")}</p>
             </div>
           </div>
         </Fade >
@@ -155,17 +159,17 @@ function App() {
         <div id='about'>
           <img src={main} alt="" />
           <div>
-            <h1>О нас</h1>
+            <h1>{t("menuAbout")}</h1>
             <div id='line'></div>
             <p>
-              Наша клиника предлагает первоклассное медицинское обслуживание с командой высококвалифицированных специалистов. Мы стремимся предоставлять индивидуализированный уход каждому нашему пациенту.
+              {t("aboutTxt")}
             </p>
           </div>
         </div>
       </Zoom>
 
       <div id='galery'>
-        <h1>Галерея</h1>
+        <h1>{t("menuGalery")}</h1>
         <div id='lineInGalery'></div>
         <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
           <Carousel
@@ -206,7 +210,7 @@ function App() {
       {/* </Fade> */}
 
       <div id='servicesDiv'>
-        <h1>Услуги</h1>
+        <h1>{t("menuServices")}</h1>
         <div id='lineInServices'></div>
         <div id='services'>
           <div>
@@ -228,7 +232,7 @@ function App() {
       </div>
 
       <div id='reviewsDiv'>
-        <h1>Отзывы</h1>
+        <h1>{t("menuReviews")}</h1>
         <div id='lineInReviews'></div>
         <div id='reviews'>
           <Carousel
@@ -240,71 +244,71 @@ function App() {
             infinite={true}>
             <div style={{ position: 'relative' }} className='reviewDiv'>
               <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'transparent' }}></div>
-              <p><i class="fa-solid fa-quote-left"></i>
+              <p><i className="fa-solid fa-quote-left"></i>
                 Потрясающая клиника с отличными специалистами. Очень довольна обслуживанием.
-                <i class="fa-solid fa-quote-right"></i></p>
+                <i className="fa-solid fa-quote-right"></i></p>
               <img src={main} alt="" />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <p>Анна Иванова</p>
                 <div style={{ margin: '10px 0' }}>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
               </div>
             </div>
             <div style={{ position: 'relative' }} className='reviewDiv'>
               <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'transparent' }}></div>
-              <p><i class="fa-solid fa-quote-left"></i>
+              <p><i className="fa-solid fa-quote-left"></i>
                 Потрясающая клиника с отличными специалистами. Очень довольна обслуживанием.
-                <i class="fa-solid fa-quote-right"></i></p>
+                <i className="fa-solid fa-quote-right"></i></p>
               <img src={main} alt="" />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <p>Анна Иванова</p>
                 <div style={{ margin: '10px 0' }}>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-              </div>
-
-            </div>
-            <div style={{ position: 'relative' }} className='reviewDiv'>
-              <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'transparent' }}></div>
-              <p><i class="fa-solid fa-quote-left"></i>
-                Потрясающая клиника с отличными специалистами. Очень довольна обслуживанием.
-                <i class="fa-solid fa-quote-right"></i></p>
-              <img src={main} alt="" />
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <p>Анна Иванова</p>
-                <div style={{ margin: '10px 0' }}>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
               </div>
 
             </div>
             <div style={{ position: 'relative' }} className='reviewDiv'>
               <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'transparent' }}></div>
-              <p><i class="fa-solid fa-quote-left"></i>
+              <p><i className="fa-solid fa-quote-left"></i>
                 Потрясающая клиника с отличными специалистами. Очень довольна обслуживанием.
-                <i class="fa-solid fa-quote-right"></i></p>
+                <i className="fa-solid fa-quote-right"></i></p>
               <img src={main} alt="" />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <p>Анна Иванова</p>
                 <div style={{ margin: '10px 0' }}>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+            </div>
+            <div style={{ position: 'relative' }} className='reviewDiv'>
+              <div style={{ position: "absolute", top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'transparent' }}></div>
+              <p><i className="fa-solid fa-quote-left"></i>
+                Потрясающая клиника с отличными специалистами. Очень довольна обслуживанием.
+                <i className="fa-solid fa-quote-right"></i></p>
+              <img src={main} alt="" />
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <p>Анна Иванова</p>
+                <div style={{ margin: '10px 0' }}>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
               </div>
 
@@ -315,7 +319,7 @@ function App() {
       </div>
 
       <div id='team'>
-        <h1>Команда</h1>
+        <h1>{t("menuTeam")}</h1>
         <div id='lineInTeam'></div>
         <Carousel
           // autoPlay={true}
@@ -364,7 +368,7 @@ function App() {
       </div>
 
       <div id='partners'>
-        <h1>Партнеры</h1>
+        <h1>{t("menuPartners")}</h1>
         <div id='lineInpartners'></div>
         <Carousel
           autoPlay={true}
@@ -415,7 +419,7 @@ function App() {
       </div>
 
       <div id='map'>
-        <h1>Карта</h1>
+        <h1>{t("menuMap")}</h1>
         <div id='lineInMap'></div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189.98758440325756!2d49.83040338311861!3d40.36892887193947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d007fcf658b%3A0x600e0acc477acd77!2sBlack%20Dental!5e0!3m2!1sru!2saz!4v1727001739227!5m2!1sru!2saz" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -423,27 +427,27 @@ function App() {
       <footer>
         <div className='ffooter'>
           <h3>Black Dental</h3>
-          <p>Авторские права © 2024 Все права защищены</p>
+          <p>{t("Copyright")}</p>
         </div>
         <div className='sfooter'>
           <ul>
-            <li><a href="#first">Главная</a></li>
-            <li><a href="#about">О Нас</a></li>
-            <li><a href="#galery">Галерея</a></li>
-            <li><a href="#servicesDiv">Услуги</a></li>
+            <li><a href="#first">{t("menuHome")}</a></li>
+            <li><a href="#about">{t("menuAbout")}</a></li>
+            <li><a href="#galery">{t("menuGalery")}</a></li>
+            <li><a href="#servicesDiv">{t("menuServices")}</a></li>
           </ul>
           <ul>
-            <li><a href="#reviewsDiv">Отзывы</a></li>
-            <li><a href="#team">Команда</a></li>
-            <li><a href="#partners">Партнеры</a></li>
-            <li><a href="#map">Карта</a></li>
+            <li><a href="#reviewsDiv">{t("menuReviews")}</a></li>
+            <li><a href="#team">{t("menuTeam")}</a></li>
+            <li><a href="#partners">{t("menuPartners")}</a></li>
+            <li><a href="#map">{t("menuMap")}</a></li>
           </ul>
         </div>
       </footer>
 
       <div id='contact'>
         <a target='_blank' href="https://wa.me/994552270932">
-          <i style={{ color: '#fff', fontSize: 36 }} class="fa-brands fa-whatsapp"></i>
+          <i style={{ color: '#fff', fontSize: 36 }} className="fa-brands fa-whatsapp"></i>
         </a>
       </div>
 

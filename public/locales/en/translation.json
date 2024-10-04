@@ -1,0 +1,16 @@
+{
+    "menuHome": "Home",
+    "menuAbout": "About",
+    "menuGalery": "Galery",
+    "menuServices": "Services",
+    "menuReviews": "Reviews",
+    "menuTeam": "Team",
+    "menuPartners": "Partners",
+    "menuMap": "Map",
+    "Copyright":"Copyright © 2024 All rights reserved",
+
+    "mainTxt1":"Welcome to the clinic",
+    "mainTxt2":"We take care of your health",
+
+    "aboutTxt": "Our clinic offers first-class medical care with a team of highly qualified specialists. We strive to provide personalized care to each of our patients."
+}
