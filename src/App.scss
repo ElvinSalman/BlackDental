@@ -174,7 +174,7 @@ header {
 
 #backDivImg {
     margin: 80px 0;
-    background-image: url('./photos/main.png');
+    background-image: url('https://dentalway.ru/upload/medialibrary/d7f/cepwslc1q293xz09d6e0uatjqoxo6xnk.jpg');
     height: 600px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -494,12 +494,12 @@ footer {
     justify-content: center;
 
     li {
-        margin:  4px 0;
+        margin: 0;
         width: 60%;
         text-align: center;
         a{
             display: block;
-            padding: 15px;
+            padding: 16px;
             color: white;
             width: 100%;
             font-size: 20px;

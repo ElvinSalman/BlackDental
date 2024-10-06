@@ -76,12 +76,12 @@ function App() {
     i18n.changeLanguage(language);
   }
 
-  // const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default value
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default value
   const handleLanguageChange = (event) => {
     const value = event.target.value;
     changeLanguage(value);
 
-    // setSelectedLanguage(value);  // Update the selected language
+    setSelectedLanguage(value);  // Update the selected language
   };
   return (
 
@@ -93,7 +93,8 @@ function App() {
             <li>
               <select
                 onChange={handleLanguageChange}
-                style={{ fontSize: '18px', padding: "8px 13px ", backgroundColor: '#000', color: '#fff', border: 'none', borderBottom: '2px solid white', outline: 'none' }}>
+                value={selectedLanguage}
+                style={{ boxShadow: 'none', fontSize: '18px', padding: "8px 13px ", backgroundColor: '#000', color: '#fff', border: 'none', borderBottom: '2px solid white', outline: 'none' }}>
                 <option value='az'>AZ</option>
                 <option value='ru'>RU</option>
                 <option selected value='en'>EN</option>
@@ -128,6 +129,7 @@ function App() {
           <li>
             <select
               onChange={handleLanguageChange}
+              value={selectedLanguage}
               style={{ fontSize: '16px', padding: "8px 13px ", backgroundColor: '#000', color: '#fff', border: 'none', borderBottom: '2px solid white', outline: 'none' }}>
               <option value='az'>AZ</option>
               <option value='ru'>RU</option>
