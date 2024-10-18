@@ -72,6 +72,7 @@ header {
 
     #mainBlock {
         width: 100%;
+        height: 100vh;
         position: relative;
         box-shadow: 0 0 30px rgb(78, 78, 78);
 
@@ -491,14 +492,15 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     padding-top: 30px;
 
     li {
         margin: 4px 0;
         width: 60%;
         text-align: center;
-        a{
+
+        a {
             display: block;
             padding: 16px;
             color: white;
@@ -508,7 +510,8 @@ footer {
             text-decoration: none;
             transition: 0.5s;
             background-color: transparent;
-            &:hover{
+
+            &:hover {
                 // border-bottom: 2px solid white;
                 background-color: rgba(255, 255, 255, 0.199);
                 // color: #000;

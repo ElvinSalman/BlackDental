@@ -157,8 +157,8 @@ function App() {
         </Fade >
       </div>
 
-      <Zoom>
-        <div id='about'>
+      {/* <Zoom> */}
+        <div className='wow animate__animated animate__slideInUp' id='about'>
           <img src={main} alt="" />
           <div>
             <h1>{t("menuAbout")}</h1>
@@ -168,12 +168,12 @@ function App() {
             </p>
           </div>
         </div>
-      </Zoom>
+      {/* </Zoom> */}
 
       <div id='galery'>
-        <h1>{t("menuGalery")}</h1>
-        <div id='lineInGalery'></div>
-        <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuGalery")}</h1>
+        <div className='wow animate__animated animate__fadeInUp' id='lineInGalery'></div>
+        <div className='wow animate__animated animate__slideInUp' style={{ borderRadius: '10px', overflow: 'hidden' }}>
           <Carousel
             autoPlay={true}
             autoPlaySpeed={2000}
@@ -204,17 +204,17 @@ function App() {
       {/* <Fade> */}
       <div id='backDivImg'>
         <div>
-          <h2>Преимущества нашей клиники</h2>
-          <div id='lineinBackDiv'></div>
-          <p>Лучшие врачи и современное оборудование</p>
+          <h2 className='wow animate__animated animate__fadeInUp'>Преимущества нашей клиники</h2>
+          <div className='wow animate__animated animate__fadeInUp' id='lineinBackDiv'></div>
+          <p className='wow animate__animated animate__fadeInUp'>Лучшие врачи и современное оборудование</p>
         </div>
       </div>
       {/* </Fade> */}
 
       <div id='servicesDiv'>
-        <h1>{t("menuServices")}</h1>
-        <div id='lineInServices'></div>
-        <div id='services'>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuServices")}</h1>
+        <div className='wow animate__animated animate__fadeInUp' id='lineInServices'></div>
+        <div className='wow animate__animated animate__slideInUp' id='services'>
           <div>
             <img src={main} alt="" />
             <h3>Лечение и терапия</h3>
@@ -234,9 +234,9 @@ function App() {
       </div>
 
       <div id='reviewsDiv'>
-        <h1>{t("menuReviews")}</h1>
-        <div id='lineInReviews'></div>
-        <div id='reviews'>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuReviews")}</h1>
+        <div className='wow animate__animated animate__fadeInUp' id='lineInReviews'></div>
+        <div className='wow animate__animated animate__slideInUp' id='reviews'>
           <Carousel
             autoPlay={true}
             autoPlaySpeed={2000}
@@ -321,11 +321,12 @@ function App() {
       </div>
 
       <div id='team'>
-        <h1>{t("menuTeam")}</h1>
-        <div id='lineInTeam'></div>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuTeam")}</h1>
+        <div className='wow animate__animated animate__slideInUp' id='lineInTeam'></div>
         <Carousel
           // autoPlay={true}
           // autoPlaySpeed={2000}
+          className='wow animate__animated animate__slideInUp'
           transitionDuration={1000}
           containerClass="carousel-container"
           responsive={responsiveSecond}
@@ -370,8 +371,8 @@ function App() {
       </div>
 
       <div id='partners'>
-        <h1>{t("menuPartners")}</h1>
-        <div id='lineInpartners'></div>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuPartners")}</h1>
+        <div className='wow animate__animated animate__slideInUp' id='lineInpartners'></div>
         <Carousel
           autoPlay={true}
           autoPlaySpeed={0}
@@ -421,9 +422,9 @@ function App() {
       </div>
 
       <div id='map'>
-        <h1>{t("menuMap")}</h1>
-        <div id='lineInMap'></div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189.98758440325756!2d49.83040338311861!3d40.36892887193947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d007fcf658b%3A0x600e0acc477acd77!2sBlack%20Dental!5e0!3m2!1sru!2saz!4v1727001739227!5m2!1sru!2saz" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <h1 className='wow animate__animated animate__fadeInUp'>{t("menuMap")}</h1>
+        <div className='wow animate__animated animate__fadeInUp' id='lineInMap'></div>
+        <iframe className='wow animate__animated animate__fadeInUp' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189.98758440325756!2d49.83040338311861!3d40.36892887193947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d007fcf658b%3A0x600e0acc477acd77!2sBlack%20Dental!5e0!3m2!1sru!2saz!4v1727001739227!5m2!1sru!2saz" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <footer>
