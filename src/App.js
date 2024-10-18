@@ -214,18 +214,18 @@ function App() {
       <div id='servicesDiv'>
         <h1 className='wow animate__animated animate__fadeInUp'>{t("menuServices")}</h1>
         <div className='wow animate__animated animate__fadeInUp' id='lineInServices'></div>
-        <div className='wow animate__animated animate__slideInUp' id='services'>
-          <div>
+        <div id='services'>
+          <div className='wow animate__animated animate__slideInUp'>
             <img src={main} alt="" />
             <h3>Лечение и терапия</h3>
             <p>Эффективные методики лечения, основанные на передовых медицинских исследованиях</p>
           </div>
-          <div>
+          <div className='wow animate__animated animate__slideInUp'>
             <img src={main} alt="" />
             <h3>Диагностические услуги</h3>
             <p>Современные диагностические технологии для точных результатов</p>
           </div>
-          <div>
+          <div className='wow animate__animated animate__slideInUp'>
             <img src={main} alt="" />
             <h3>Общие медицинские осмотры</h3>
             <p>Предлагаем комплексные медицинские осмотры для поддержания вашего здоровья</p>

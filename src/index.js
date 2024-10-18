@@ -9,7 +9,11 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<div class="loader"></div>}>
+    <Suspense fallback={
+      <div style={{ height: '100vh', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div class="loader"></div>
+      </div>
+    }>
       <App />
     </Suspense>
   </React.StrictMode>
